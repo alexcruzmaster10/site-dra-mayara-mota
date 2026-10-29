@@ -1,0 +1,5 @@
+# Fotos originais (baixadas do Instagram) e listas de links temporários
+fotos-originais/
+# Não publicar no site: cópias de versões antigas e configurações locais
+versoes/
+.claude/
