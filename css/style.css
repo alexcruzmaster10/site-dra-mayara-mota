@@ -748,16 +748,8 @@ h2 em, h1 em { font-style: italic; font-weight: 500; color: var(--ouro); }
 }
 .insta__cabecalho h2 { margin: 0; }
 /* @ da Dra. no título: leva para o Instagram */
-.insta__perfil {
-  display: inline-flex;
-  align-items: center;
-  gap: .3em;
-  text-decoration: none;
-  white-space: nowrap;
-}
-.insta__perfil svg { width: .75em; height: .75em; flex: none; color: var(--ouro); transition: transform .3s; }
+.insta__perfil { text-decoration: none; white-space: nowrap; }
 .insta__perfil:hover em { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .15em; }
-.insta__perfil:hover svg { transform: scale(1.12); }
 .insta__cabecalho > p { margin: 0; max-width: 22rem; color: var(--texto-suave); }
 .insta__cabecalho strong { color: var(--texto); font-weight: 500; }
 .insta__grade {
