@@ -14,6 +14,8 @@
   --linha: #dccbb8;
   --ouro: #b08850;
   --ouro-claro: #d8b98a;
+  --ouro-texto: #82602f;    /* dourado mais escuro p/ textos pequenos no fundo claro (contraste AA) */
+  --ouro-botao: #94703c;    /* fundo dos botões dourados com texto branco */
   --texto: #2e1f16;
   --texto-suave: #7a6656;
   --texto-claro: #f6ede2;   /* texto sobre o chocolate */
@@ -47,6 +49,25 @@ body {
 img { max-width: 100%; display: block; }
 a { color: inherit; }
 
+/* navegação por teclado: contorno visível no item focado */
+:focus-visible { outline: 2px solid var(--ouro-texto); outline-offset: 3px; }
+.topo :focus-visible, .hero :focus-visible, .rodape :focus-visible, .whats-flutuante:focus-visible { outline-color: var(--ouro-claro); }
+
+/* "Pular para o conteúdo": só aparece ao navegar com Tab */
+.pular {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  z-index: 100;
+  padding: .7rem 1.2rem;
+  background: var(--creme);
+  color: var(--texto);
+  border-radius: var(--raio);
+  font-weight: 500;
+  text-decoration: none;
+}
+.pular:focus { top: 1rem; }
+
 h1, h2, h3 {
   font-family: var(--fonte-titulo);
   font-weight: 600;
@@ -68,7 +89,7 @@ h2 em, h1 em { font-style: italic; font-weight: 500; color: var(--ouro); }
   font-size: .8rem;
   letter-spacing: .3em;
   text-transform: uppercase;
-  color: var(--ouro);
+  color: var(--ouro-texto);
   margin: 0 0 .9rem;
   display: flex;
   align-items: center;
@@ -132,11 +153,11 @@ h2 em, h1 em { font-style: italic; font-weight: 500; color: var(--ouro); }
 }
 .botao svg { width: 1.3em; height: 1.3em; }
 
-.botao--ouro { background: var(--ouro); color: #fff; }
+.botao--ouro { background: var(--ouro-botao); color: #fff; }
 .botao--ouro:hover { background: var(--cacau); transform: translateY(-2px); }
 
 .botao--contorno { border-color: currentColor; color: var(--texto); }
-.botao--contorno:hover { border-color: var(--ouro); color: var(--ouro); }
+.botao--contorno:hover { border-color: var(--ouro); color: var(--ouro-texto); }
 
 .botao--grande { font-size: 1rem; padding: 1.05rem 2.3rem; }
 
@@ -145,7 +166,7 @@ h2 em, h1 em { font-style: italic; font-weight: 500; color: var(--ouro); }
   color: var(--texto-suave);
   letter-spacing: .1em;
 }
-.botao--texto:hover { color: var(--ouro); }
+.botao--texto:hover { color: var(--ouro-texto); }
 
 /* =====================================================================
    TOPO
@@ -446,7 +467,7 @@ h2 em, h1 em { font-style: italic; font-weight: 500; color: var(--ouro); }
   font-size: .8rem;
   letter-spacing: .2em;
   text-transform: uppercase;
-  color: var(--ouro);
+  color: var(--ouro-texto);
 }
 
 .destaques {
@@ -576,6 +597,7 @@ h2 em, h1 em { font-style: italic; font-weight: 500; color: var(--ouro); }
   --texto: var(--texto-claro);
   --texto-suave: #cdb9a5;
   --ouro: var(--ouro-claro);
+  --ouro-texto: var(--ouro-claro);
   background: var(--chocolate);
   color: var(--texto);
 }
@@ -697,7 +719,7 @@ h2 em, h1 em { font-style: italic; font-weight: 500; color: var(--ouro); }
   font-size: .76rem;
   letter-spacing: .18em;
   text-transform: uppercase;
-  color: var(--ouro);
+  color: var(--ouro-texto);
 }
 .pessoa__info p:not(.pessoa__cargo) { color: var(--texto-suave); font-size: .95rem; }
 .pessoa__insta {
@@ -711,7 +733,7 @@ h2 em, h1 em { font-style: italic; font-weight: 500; color: var(--ouro); }
   text-decoration: none;
 }
 .pessoa__insta svg { width: 18px; height: 18px; color: var(--ouro); }
-.pessoa__insta:hover { color: var(--ouro); }
+.pessoa__insta:hover { color: var(--ouro-texto); }
 .pessoa .botao { margin-top: auto; align-self: flex-start; font-size: .78rem; padding: .65rem 1.2rem; }
 
 /* ---------- Instagram ---------- */
@@ -844,6 +866,18 @@ h2 em, h1 em { font-style: italic; font-weight: 500; color: var(--ouro); }
   text-align: center;
   font-size: .82rem;
 }
+.rodape__copy p { margin: 0; }
+
+.privacidade { max-width: 640px; margin: .6rem auto 0; }
+.privacidade summary {
+  display: inline-block;
+  cursor: pointer;
+  color: var(--ouro-claro);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.privacidade summary::-webkit-details-marker { display: none; }
+.privacidade p { margin-top: .8rem; line-height: 1.6; opacity: .85; }
 
 /* =====================================================================
    BOTÃO FLUTUANTE DO WHATSAPP
@@ -918,7 +952,7 @@ h2 em, h1 em { font-style: italic; font-weight: 500; color: var(--ouro); }
   .menu__link.ativo { padding-left: .8rem; border-left: 2px solid var(--ouro-claro); }
 
   .menu__social { padding: 1rem 0; }
-  .menu__agendar { margin-top: .4rem; padding: .95rem; background: var(--ouro); border-color: var(--ouro); color: #fff; }
+  .menu__agendar { margin-top: .4rem; padding: .95rem; background: var(--ouro-botao); border-color: var(--ouro-botao); color: #fff; }
 
   .sobre__grade { grid-template-columns: 1fr; }
   .sobre__foto { width: min(340px, 80%); margin: 0 auto 1rem; }

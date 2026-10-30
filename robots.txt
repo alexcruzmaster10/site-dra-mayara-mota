@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://alexcruzmaster10.github.io/site-dra-mayara-mota/sitemap.xml

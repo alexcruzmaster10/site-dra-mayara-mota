@@ -7,13 +7,75 @@
   <meta name="description" content="Clínica Dra. Mayara Mota: harmonização facial e corporal, botox, preenchimentos, bioestimuladores, HIPRO, Laser Lavieen, CO2 e Endolaser em Araçatuba e São José do Rio Preto. Agende pelo WhatsApp.">
   <meta name="theme-color" content="#3b2418">
   <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <!-- CONFIRMAR: trocar o endereço do GitHub Pages pelo domínio próprio quando houver (aqui, no sitemap, robots e llms.txt) -->
+  <link rel="canonical" href="https://alexcruzmaster10.github.io/site-dra-mayara-mota/">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Jost:wght@400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <!-- Prévia ao compartilhar o link (WhatsApp, Instagram, Facebook) -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Clínica Dra. Mayara Mota">
+  <meta property="og:title" content="Dra. Mayara Mota | Harmonização Facial e Corporal">
+  <meta property="og:description" content="Harmonização facial e corporal em Araçatuba e São José do Rio Preto. Agende sua avaliação pelo WhatsApp.">
+  <meta property="og:url" content="https://alexcruzmaster10.github.io/site-dra-mayara-mota/">
+  <meta property="og:image" content="https://alexcruzmaster10.github.io/site-dra-mayara-mota/img/og-mayara.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Dra. Mayara Mota, harmonização facial e corporal, Araçatuba e São José do Rio Preto">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Dados das duas unidades para o Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "HealthAndBeautyBusiness",
+        "name": "Clínica Dra. Mayara Mota · Araçatuba",
+        "url": "https://alexcruzmaster10.github.io/site-dra-mayara-mota/",
+        "image": "https://alexcruzmaster10.github.io/site-dra-mayara-mota/img/og-mayara.jpg",
+        "telephone": "+55 18 99630-4555",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Av. Brasília, 2121, Edifício New York Tower, sala 612 - Jardim Nova Yorque",
+          "addressLocality": "Araçatuba",
+          "addressRegion": "SP",
+          "postalCode": "16018-000",
+          "addressCountry": "BR"
+        },
+        "hasMap": "https://maps.app.goo.gl/YGz7zbtTSprqdiqh8",
+        "openingHoursSpecification": [
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], "opens": "07:30", "closes": "20:30" }
+        ],
+        "sameAs": ["https://www.instagram.com/dra_mayaramota/"]
+      },
+      {
+        "@type": "HealthAndBeautyBusiness",
+        "name": "Clínica Dra. Mayara Mota · São José do Rio Preto",
+        "url": "https://alexcruzmaster10.github.io/site-dra-mayara-mota/#unidades",
+        "image": "https://alexcruzmaster10.github.io/site-dra-mayara-mota/img/og-mayara.jpg",
+        "telephone": "+55 17 99702-4555",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Av. Benedito Rodrigues Lisboa, 2675, Georgina Business Park, Torre Milan - Universitário",
+          "addressLocality": "São José do Rio Preto",
+          "addressRegion": "SP",
+          "postalCode": "15090-370",
+          "addressCountry": "BR"
+        },
+        "hasMap": "https://maps.app.goo.gl/Z7qfijivKQrL7FM49",
+        "sameAs": ["https://www.instagram.com/dra_mayaramota/"]
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preload" href="css/fonts/cormorant-garamond.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
 
   <!-- Ícones reutilizados -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -65,7 +127,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="conteudo">
 
     <!-- ===================== HOME ===================== -->
     <section class="hero" id="home">
@@ -85,7 +147,7 @@
         </div>
         <a class="avaliacao" href="https://www.google.com/search?q=Dra.+Mayara+Mota+Harmoniza%C3%A7%C3%A3o+Facial+Ara%C3%A7atuba" target="_blank" rel="noopener">
           <span class="avaliacao__estrelas" aria-hidden="true">★★★★★</span>
-          <span><strong>5,0</strong> no Google · 34 avaliações</span>
+          <span><strong>5,0</strong> no Google</span>
         </a>
 
         <!-- Informações rápidas: o status (aberto/fechado) é calculado em js/main.js -->
@@ -400,7 +462,13 @@
         </ul>
       </div>
     </div>
-    <p class="rodape__copy">© <span id="ano">2026</span> Clínica Dra. Mayara Mota · CRF/SP 60815. Os resultados variam de pessoa para pessoa.</p>
+    <div class="rodape__copy">
+      <p>© <span id="ano">2026</span> Clínica Dra. Mayara Mota · CRF/SP 60815. Os resultados variam de pessoa para pessoa.</p>
+      <details class="privacidade">
+        <summary>Privacidade</summary>
+        <p>Este site não tem cadastro, formulário nem ferramentas de rastreamento, e não guarda dados de quem o visita. O agendamento acontece pelo WhatsApp, que segue a política de privacidade do próprio WhatsApp. Os mapas da seção Unidades são fornecidos pelo Google Maps, que pode registrar informações de acordo com a política do Google. As informações do site não substituem a avaliação com a Dra. As fotos são da clínica e do Instagram da Dra.; para pedir a retirada de alguma imagem, fale com a gente pelo WhatsApp.</p>
+      </details>
+    </div>
   </footer>
 
   <!-- Botão flutuante do WhatsApp -->
