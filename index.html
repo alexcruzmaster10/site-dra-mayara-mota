@@ -69,9 +69,11 @@
   }
   </script>
 
+  <script>document.documentElement.classList.add(matchMedia('(prefers-reduced-motion: reduce)').matches ? 'sem-anim' : 'anim');</script>
   <link rel="preload" href="css/fonts/cormorant-garamond.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/fonts.css?v=2">
-  <link rel="stylesheet" href="css/style.css?v=2">
+  <link rel="stylesheet" href="css/fonts.css?v=3">
+  <link rel="stylesheet" href="css/style.css?v=3">
+  <link rel="stylesheet" href="css/animacoes.css?v=3">
 </head>
 <body>
 
@@ -94,6 +96,12 @@
     <symbol id="icone-folha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
       <path d="M5 19C5 10 10 5 19 5c0 9-5 14-14 14z"/><path d="M5 19 14 10"/>
     </symbol>
+    <symbol id="icone-tiktok" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M16.6 3c.4 2.2 1.8 3.6 4 3.8v3c-1.5.1-2.8-.4-4-1.1v6.4c0 3.5-2.6 5.9-5.8 5.9A5.6 5.6 0 0 1 5.2 15.4c0-3.4 2.9-6 6.4-5.5v3.1c-1.6-.4-3.2.7-3.2 2.4 0 1.4 1.1 2.5 2.5 2.5 1.6 0 2.6-1.1 2.6-3V3h3.1z"/>
+    </symbol>
+    <symbol id="icone-threads" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M16.8 11.2c-.4-2.4-2-3.7-4.4-3.7-2.4 0-4 1.6-4 3.6 0 1.8 1.5 3 3.4 3 2.9 0 4.3-2.3 3.5-5.6M15.3 11.5c2.9.4 4.2 2.3 3.6 4.6-.8 3-3.6 4.4-6.9 4.4-4.6 0-7.5-3.2-7.5-8.5S7.4 3.5 12 3.5c3.6 0 6 1.7 7 4.6"/>
+    </symbol>
     <symbol id="icone-local" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round">
       <path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>
     </symbol>
@@ -114,6 +122,7 @@
         <a href="#tratamentos" class="menu__link">Tratamentos</a>
         <a href="#resultados" class="menu__link">Resultados</a>
         <a href="#equipe" class="menu__link">Equipe</a>
+        <a href="#duvidas" class="menu__link">Dúvidas</a>
         <a href="#unidades" class="menu__link">Unidades</a>
         <a href="https://www.instagram.com/dra_mayaramota/" target="_blank" rel="noopener" class="menu__social" aria-label="Instagram da Dra. Mayara Mota">
           <svg aria-hidden="true"><use href="#icone-instagram"/></svg>
@@ -130,22 +139,22 @@
   <main id="conteudo">
 
     <!-- ===================== HOME ===================== -->
-    <section class="hero" id="home">
+    <section class="hero" id="home" data-rolagem="abertura">
       <div class="hero__foto" aria-hidden="true">
-        <img src="img/hero-dra.webp" alt="" width="311" height="640" fetchpriority="high">
+        <img src="img/hero-dra.webp" alt="" width="311" height="640" fetchpriority="high" data-zoom>
       </div>
-      <div class="hero__conteudo">
-        <p class="sobretitulo">Harmonização facial e corporal · Araçatuba e Rio Preto</p>
-        <h1>Sua melhor versão,<br><em>sem deixar de ser você.</em></h1>
-        <p class="hero__texto">Contornos faciais e corporais com naturalidade, tecnologia e um atendimento feito só para você. Marque sua avaliação pelo WhatsApp.</p>
-        <div class="hero__acoes">
+      <div class="hero__conteudo" data-sobe>
+        <p class="sobretitulo" data-aparecer="0">Harmonização facial e corporal · Araçatuba e Rio Preto</p>
+        <h1 data-titulo-linhas><span class="linha"><span>Sua melhor versão,</span></span><span class="linha"><em>sem deixar de ser você.</em></span></h1>
+        <p class="hero__texto" data-aparecer="0.45">Contornos faciais e corporais com naturalidade, tecnologia e um atendimento feito só para você. Marque sua avaliação pelo WhatsApp.</p>
+        <div class="hero__acoes" data-aparecer="0.6">
           <a href="#" class="botao botao--ouro botao--grande js-whats">
             <svg aria-hidden="true"><use href="#icone-whats"/></svg>
             Agendar pelo WhatsApp
           </a>
           <a href="#tratamentos" class="botao botao--texto">Ver tratamentos →</a>
         </div>
-        <a class="avaliacao" href="https://www.google.com/search?q=Dra.+Mayara+Mota+Harmoniza%C3%A7%C3%A3o+Facial+Ara%C3%A7atuba" target="_blank" rel="noopener">
+        <a class="avaliacao" data-aparecer="0.75" href="https://www.google.com/search?q=Dra.+Mayara+Mota+Harmoniza%C3%A7%C3%A3o+Facial+Ara%C3%A7atuba" target="_blank" rel="noopener">
           <span class="avaliacao__estrelas" aria-hidden="true">★★★★★</span>
           <span><strong>5,0</strong> no Google</span>
         </a>
@@ -171,24 +180,47 @@
     <!-- ===================== A DRA. ===================== -->
     <section class="secao sobre" id="sobre">
       <div class="container sobre__grade">
-        <figure class="sobre__foto">
+        <figure class="sobre__foto" data-revelar="foto">
           <img src="img/sobre-dra.webp" alt="Dra. Mayara Mota de terno branco, sentada em uma poltrona de couro caramelo" width="520" height="650" loading="lazy">
           <figcaption>Dra. Mayara Mota</figcaption>
         </figure>
-        <div class="sobre__texto">
+        <div class="sobre__texto" data-revelar>
           <p class="sobretitulo"><svg aria-hidden="true"><use href="#icone-folha"/></svg>A Dra.</p>
           <h2>Beleza com <em>naturalidade</em> e cuidado</h2>
           <!-- TEXTO PROVISÓRIO: validar a história e a formação com a Dra. Mayara -->
           <p>A Dra. Mayara Mota é especialista em contornos faciais e corporais. Cada tratamento começa por uma avaliação: entender o que te incomoda, o que você quer realçar e qual o caminho mais seguro para chegar lá.</p>
           <p>Ao lado da equipe, atende em Araçatuba e São José do Rio Preto, do botox e dos preenchimentos às tecnologias como HIPRO, Laser Lavieen, Laser CO2 e Endolaser.</p>
           <p class="sobre__registro">Farmacêutica esteta · CRF/SP 60815</p>
-          <ul class="destaques">
+          <ul class="destaques" data-revelar data-cascata>
             <li><span class="destaques__icone" aria-hidden="true">✦</span><div><strong>Plano personalizado</strong>Avaliação antes de cada tratamento</div></li>
             <li><span class="destaques__icone" aria-hidden="true">↺</span><div><strong>Retorno incluso</strong>Em botox e preenchimentos</div></li>
             <li><span class="destaques__icone" aria-hidden="true">📷</span><div><strong>Orçamento por foto</strong>Mande pelo WhatsApp e receba no mesmo dia</div></li>
             <li><span class="destaques__icone" aria-hidden="true">$</span><div><strong>Pague como preferir</strong>Pix, dinheiro, débito e crédito em até 10x</div></li>
           </ul>
         </div>
+      </div>
+    </section>
+
+    <!-- ===================== MÉTODO MM 360° ===================== -->
+    <!-- Fonte: posts do Instagram ("Full face padrão MM", "método MM 360°"). TEXTO PROVISÓRIO: validar com a Dra. -->
+    <section class="secao metodo" id="metodo">
+      <div class="container metodo__grade">
+        <div class="metodo__texto" data-revelar>
+          <p class="sobretitulo">Full face · Método MM 360°</p>
+          <h2>O rosto tratado <em>por inteiro</em></h2>
+          <p>Nem sempre tratar só uma região resolve a queixa. No full face pelo método MM 360°, a Dra. olha o rosto como um todo e planeja cada ponto para devolver contorno e sustentação, sem perder a sua identidade.</p>
+          <p>É o caminho de muitas pacientes que perderam estrutura no rosto depois de emagrecer.</p>
+          <ol class="passos-metodo" data-revelar data-cascata>
+            <li><strong>Avaliação</strong>O que te incomoda, o que você quer realçar e o que o seu rosto pede.</li>
+            <li><strong>Planejamento</strong>Os pontos e a quantidade certa de produto, pensados para o seu caso.</li>
+            <li><strong>Construção</strong>Contorno e sustentação com foco em naturalidade. Não é a quantidade de ml que define o resultado.</li>
+            <li><strong>Acompanhamento</strong>Retorno incluso em botox e preenchimentos.</li>
+          </ol>
+          <a href="#" class="botao botao--ouro js-whats" data-assunto="o full face pelo método MM 360°">Quero minha avaliação</a>
+        </div>
+        <figure class="metodo__foto" data-revelar="foto">
+          <img src="img/metodo-atendimento.webp" alt="Dra. Mayara Mota aplicando preenchimento em uma paciente deitada na maca" width="900" height="1200" loading="lazy">
+        </figure>
       </div>
     </section>
 
@@ -203,24 +235,30 @@
           <p>Escolha a área e fale com a gente: enviamos valores, formas de pagamento e os horários livres.</p>
         </div>
 
-        <!-- Lista tirada do catálogo da assistente (Clinica Isa/docs/PROCEDIMENTOS.md), sem preços -->
+        <!-- Lista tirada do catálogo da assistente (Clinica Isa/docs/PROCEDIMENTOS.md), sem preços.
+             "Detalhes": o que vem incluso, do mesmo catálogo; novidades tiradas do Instagram. -->
         <div class="areas">
-          <article class="area">
+          <article class="area" data-revelar>
             <p class="area__numero">01</p>
             <h3>Rosto</h3>
             <p class="area__resumo">Harmonizar, repor volume e suavizar linhas.</p>
             <ul>
+              <li>Full face pelo método MM 360°</li>
               <li>Botox full face</li>
               <li>Preenchimento labial, olheiras, mento e mandíbula</li>
-              <li>Rinomodelação</li>
+              <li>Rinomodelação e perfiloplastia</li>
               <li>Bioestimuladores de colágeno (Sculptra, Radiesse, Rennova, Elleva)</li>
               <li>Fios de sustentação</li>
               <li>HIPRO: lifting sem cortes</li>
             </ul>
+            <details class="area__detalhes">
+              <summary>Ver detalhes</summary>
+              <p>Botox e preenchimentos têm <strong>retorno incluso</strong>. Preenchimento de mandíbula e malar começa sempre por uma avaliação. Novidade: Nano BTCX, que ajuda a prolongar o efeito do botox.</p>
+            </details>
             <a href="#" class="botao botao--contorno js-whats" data-assunto="tratamentos para o rosto">Quero saber mais</a>
           </article>
 
-          <article class="area">
+          <article class="area" data-revelar>
             <p class="area__numero">02</p>
             <h3>Pele</h3>
             <p class="area__resumo">Textura, manchas, poros e luminosidade.</p>
@@ -228,13 +266,17 @@
               <li>Laser Lavieen</li>
               <li>Laser CO2 (rosto, pálpebras, pescoço, colo e estrias)</li>
               <li>Melasma, microvasos e jato de plasma</li>
-              <li>Microagulhamento e skinbooster</li>
+              <li>Microagulhamento, skinbooster e peptídeo GHK-Cu</li>
               <li>Limpeza de pele e peelings</li>
             </ul>
+            <details class="area__detalhes">
+              <summary>Ver detalhes</summary>
+              <p>Limpeza de pele com LED ou com máscara coreana de PDRN. Protocolo Melasma Off em 3 dias na clínica. Peelings para acne, manchas e melasma, inclusive para pele sensível.</p>
+            </details>
             <a href="#" class="botao botao--contorno js-whats" data-assunto="tratamentos de pele">Quero saber mais</a>
           </article>
 
-          <article class="area">
+          <article class="area" data-revelar>
             <p class="area__numero">03</p>
             <h3>Corpo</h3>
             <p class="area__resumo">Contorno, gordura localizada e firmeza.</p>
@@ -245,25 +287,41 @@
               <li>Tratamento de lipedema</li>
               <li>Drenagem linfática e massagem modeladora</li>
             </ul>
+            <details class="area__detalhes">
+              <summary>Ver detalhes</summary>
+              <p>Endolaser com <strong>3 meses de acompanhamento</strong>, com sessões a cada 15 dias. Criolipólise com consulta antes, cinta e 4 meses de acompanhamento. Lipedema em 4 sessões, uma por semana. Drenagem com LED e ILIB.</p>
+            </details>
             <a href="#" class="botao botao--contorno js-whats" data-assunto="tratamentos para o corpo">Quero saber mais</a>
           </article>
 
-          <article class="area">
+          <article class="area" data-revelar>
             <p class="area__numero">04</p>
             <h3>Bem-estar</h3>
             <p class="area__resumo">Cuidados que vão além da estética.</p>
             <ul>
               <li>Estética íntima</li>
-              <li>Emagrecimento</li>
+              <li>Emagrecimento com acompanhamento</li>
               <li>Tratamentos capilares</li>
               <li>Vitaminas</li>
             </ul>
+            <details class="area__detalhes">
+              <summary>Ver detalhes</summary>
+              <!-- CONFIRMAR: forma de falar do emagrecimento (sem citar o medicamento) -->
+              <p>Emagrecimento com consulta médica e bioimpedância. Tratamento capilar em 5 sessões, com retorno incluso.</p>
+            </details>
             <a href="#" class="botao botao--contorno js-whats" data-assunto="tratamentos de bem-estar">Quero saber mais</a>
           </article>
         </div>
 
-        <div class="tecnologias" aria-label="Tecnologias da clínica">
-          <span>HIPRO</span><span>Laser Lavieen</span><span>Laser CO2</span><span>Endolaser</span><span>Criolipólise</span><span>Radiofrequência fracionada</span>
+        <!-- Tecnologias: o que cada uma faz, em uma linha (catálogo e posts do Instagram). TEXTO PROVISÓRIO -->
+        <div class="tecnologias">
+          <h3 class="tecnologias__titulo" data-revelar>Tecnologias da clínica</h3>
+          <ul class="tecnologias__lista">
+            <li data-revelar><strong>HIPRO</strong>Ultrassom microfocado: firmeza no rosto, papada, pescoço e corpo, sem cortes.</li>
+            <li data-revelar><strong>Laser Lavieen</strong>Textura, poros, manchas e viço da pele, em várias regiões do corpo.</li>
+            <li data-revelar><strong>Laser CO2</strong>Renovação profunda: rosto, pálpebras, pescoço, colo, cicatrizes e estrias.</li>
+            <li data-revelar><strong>Endolaser</strong>Gordura localizada e flacidez, com acompanhamento de 3 meses.</li>
+          </ul>
         </div>
 
         <div class="cta-centro">
@@ -272,35 +330,113 @@
       </div>
     </section>
 
+    <!-- ===================== COMO FUNCIONA ===================== -->
+    <!-- Fonte: fluxo de atendimento da clínica (Clinica Isa/docs/FLUXO.md) -->
+    <section class="secao como" id="como-funciona">
+      <div class="container">
+        <div class="cabecalho-secao cabecalho-secao--centro" data-revelar>
+          <svg class="ornamento" aria-hidden="true"><use href="#icone-folha"/></svg>
+          <p class="sobretitulo">Como funciona</p>
+          <h2>Do primeiro “oi” ao <em>retorno</em></h2>
+          <div class="divisor" aria-hidden="true"><span></span></div>
+        </div>
+        <ol class="etapas">
+          <li class="etapa" data-revelar>
+            <span class="etapa__numero">1</span>
+            <h3>Fale com a gente</h3>
+            <p>Chame no WhatsApp e conte o que te incomoda. Se quiser, mande foto de frente e de lado: a Isabelly faz o orçamento no mesmo dia.</p>
+          </li>
+          <li class="etapa" data-revelar>
+            <span class="etapa__numero">2</span>
+            <h3>Escolha o horário</h3>
+            <p>Mostramos os horários livres em Araçatuba ou Rio Preto. O agendamento é feito com pelo menos um dia de antecedência.</p>
+          </li>
+          <li class="etapa" data-revelar>
+            <span class="etapa__numero">3</span>
+            <h3>Garanta a vaga</h3>
+            <!-- CONFIRMAR: mostrar o valor da caução no site? -->
+            <p>A reserva é confirmada com uma caução por Pix, descontada do valor do procedimento.</p>
+          </li>
+          <li class="etapa" data-revelar>
+            <span class="etapa__numero">4</span>
+            <h3>Avaliação e cuidado</h3>
+            <p>No dia, a Dra. avalia e confirma o plano com você. Em botox e preenchimentos, o retorno já está incluso.</p>
+          </li>
+        </ol>
+        <div class="cta-centro">
+          <a href="#" class="botao botao--ouro botao--grande js-whats">
+            <svg aria-hidden="true"><use href="#icone-whats"/></svg>
+            Começar pelo WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== TRANSIÇÃO (foto abre de dentro do círculo) ===================== -->
+    <!-- A frase é o lema da própria Dra. (bio do Instagram) -->
+    <section class="mascara" aria-label="Sua melhor versão">
+      <div class="mascara__palco">
+        <img src="img/mascara-dra.webp" alt="Dra. Mayara Mota de blazer marrom, em ensaio com fundo chocolate" width="1600" height="2133" loading="lazy">
+        <div class="mascara__texto">
+          <p class="mascara__titulo">Sua melhor <em>versão.</em></p>
+          <p class="mascara__sub">Sem deixar de ser você</p>
+        </div>
+      </div>
+    </section>
+
     <!-- ===================== RESULTADOS ===================== -->
     <section class="secao resultados" id="resultados">
       <div class="container">
-        <div class="cabecalho-secao cabecalho-secao--centro">
+        <div class="cabecalho-secao cabecalho-secao--centro" data-revelar>
           <svg class="ornamento" aria-hidden="true"><use href="#icone-brilho"/></svg>
           <p class="sobretitulo">Resultados</p>
           <h2>Antes e <em>depois</em></h2>
           <div class="divisor" aria-hidden="true"><span></span></div>
           <p>Casos publicados no Instagram da Dra. Os resultados variam de pessoa para pessoa.</p>
         </div>
+      </div>
 
-        <!-- Só fotos que a própria Dra. já publicou; trocar pelas autorizadas quando a clínica mandar -->
-        <div class="resultados__grade">
-          <figure class="resultado">
-            <img src="img/resultado-labios.webp" alt="Antes e depois de preenchimento labial: lábios mais definidos e hidratados" width="480" height="640" loading="lazy">
-            <figcaption>Preenchimento labial</figcaption>
-          </figure>
-          <figure class="resultado">
-            <img src="img/resultado-full-face.webp" alt="Antes e depois de full face: pele mais uniforme e contornos realçados" width="360" height="640" loading="lazy">
-            <figcaption>Full face</figcaption>
-          </figure>
-          <figure class="resultado">
-            <img src="img/resultado-perfil.webp" alt="Antes e depois em perfil: nariz e queixo mais harmônicos" width="480" height="640" loading="lazy">
-            <figcaption>Harmonização do perfil</figcaption>
-          </figure>
+      <!-- Só fotos que a própria Dra. já publicou; trocar pelas autorizadas quando a clínica mandar.
+           Com animação: trilho horizontal preso na tela; sem animação: grade normal. -->
+      <div class="trilho">
+        <div class="trilho__palco">
+          <p class="trilho__dica" aria-hidden="true">Role para ver mais casos →</p>
+          <div class="trilho__faixa">
+            <figure class="trilho__item resultado">
+              <img src="img/resultado-labios.webp" alt="Antes e depois de preenchimento labial: lábios mais definidos e hidratados" width="480" height="640" loading="lazy">
+              <figcaption>Preenchimento labial</figcaption>
+            </figure>
+            <figure class="trilho__item resultado">
+              <img src="img/resultado-perfil-2.webp" alt="Antes e depois em perfil: mandíbula e queixo mais definidos" width="720" height="960" loading="lazy">
+              <figcaption>Contorno após emagrecer</figcaption>
+            </figure>
+            <figure class="trilho__item resultado">
+              <img src="img/resultado-full-face.webp" alt="Antes e depois de full face: pele mais uniforme e contornos realçados" width="360" height="640" loading="lazy">
+              <figcaption>Full face</figcaption>
+            </figure>
+            <figure class="trilho__item resultado">
+              <img src="img/resultado-perfil-3.webp" alt="Antes e depois em perfil: rosto com mais sustentação e contorno" width="720" height="960" loading="lazy">
+              <figcaption>Contorno e harmonia</figcaption>
+            </figure>
+            <figure class="trilho__item resultado">
+              <img src="img/resultado-perfil.webp" alt="Antes e depois em perfil: nariz e queixo mais harmônicos" width="480" height="640" loading="lazy">
+              <figcaption>Harmonização do perfil</figcaption>
+            </figure>
+            <figure class="trilho__item resultado">
+              <img src="img/resultado-perfil-4.webp" alt="Antes e depois em perfil: contorno da mandíbula e lábios realçados" width="720" height="960" loading="lazy">
+              <figcaption>Contorno e proporção</figcaption>
+            </figure>
+            <figure class="trilho__item resultado">
+              <img src="img/resultado-perfil-5.webp" alt="Antes e depois em perfil: queixo e mandíbula mais definidos" width="720" height="960" loading="lazy">
+              <figcaption>Harmonização facial</figcaption>
+            </figure>
+          </div>
         </div>
+      </div>
 
+      <div class="container">
         <!-- Avaliações do Google (trechos curtos, fonte: perfil da clínica no Google) -->
-        <div class="depoimentos">
+        <div class="depoimentos" data-revelar>
           <blockquote>“O atendimento é excelente desde a recepção até o final da consulta.”</blockquote>
           <blockquote>“Excelente profissional, equipe muito atenciosa e educada.”</blockquote>
           <blockquote>“As meninas me trataram super bem e com certeza irei voltar!”</blockquote>
@@ -312,7 +448,7 @@
     <!-- ===================== EQUIPE ===================== -->
     <section class="secao equipe" id="equipe">
       <div class="container">
-        <div class="cabecalho-secao cabecalho-secao--centro">
+        <div class="cabecalho-secao cabecalho-secao--centro" data-revelar>
           <svg class="ornamento" aria-hidden="true"><use href="#icone-folha"/></svg>
           <p class="sobretitulo">Equipe</p>
           <h2>Quem cuida <em>de você</em></h2>
@@ -320,7 +456,7 @@
         </div>
 
         <div class="equipe__grade">
-          <article class="pessoa">
+          <article class="pessoa" data-revelar="esquerda">
             <div class="pessoa__foto">
               <img src="img/equipe-mayara.webp" alt="Dra. Mayara Mota de blazer marrom, em retrato de perfil" width="468" height="624" loading="lazy">
             </div>
@@ -334,7 +470,7 @@
             </div>
           </article>
 
-          <article class="pessoa">
+          <article class="pessoa" data-revelar="direita">
             <div class="pessoa__foto">
               <img src="img/equipe-isabelly.webp" alt="Isabelly de perfil, segurando o jaleco sobre o ombro" width="480" height="640" loading="lazy">
             </div>
@@ -345,6 +481,54 @@
               <p>Cuida da limpeza de pele, dos peelings e das tecnologias como HIPRO e Laser Lavieen. É ela também quem acompanha os orçamentos por foto.</p>
               <a href="#" class="botao botao--contorno js-whats" data-pessoa="a Isabelly">Falar com a Isabelly</a>
             </div>
+          </article>
+        </div>
+
+        <!-- Fonte: posts do Instagram (Congresso Full Face 2026, peelings avançados, mentoria na clínica). TEXTO PROVISÓRIO -->
+        <div class="estudo">
+          <div class="estudo__texto" data-revelar>
+            <p class="sobretitulo">Sempre estudando</p>
+            <h3>Técnica que <em>não para</em> de evoluir</h3>
+            <p>A Dra. participa de congressos como o Full Face 2026, em São Paulo, e se atualiza em peelings avançados e estética regenerativa. As novidades chegam à clínica: HIPRO, Laser Lavieen, Nano BTCX e peptídeo GHK-Cu.</p>
+          </div>
+          <figure class="estudo__foto" data-revelar="foto">
+            <img src="img/estudo-congresso.webp" alt="Dra. Mayara Mota no painel do Congresso Full Face 2026" width="600" height="800" loading="lazy">
+          </figure>
+          <figure class="estudo__foto" data-revelar="foto">
+            <img src="img/estudo-certificado.webp" alt="Dra. Mayara Mota recebendo certificado de conclusão de curso de peelings" width="600" height="800" loading="lazy">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== VANTAGENS ===================== -->
+    <!-- Fonte: Instagram (Clube M lançado em 22/10/2026, Grupo VIP, Linha Dra. Mayara Mota). Detalhes só pelo WhatsApp. -->
+    <section class="secao vantagens" id="vantagens">
+      <div class="container">
+        <div class="cabecalho-secao cabecalho-secao--centro" data-revelar>
+          <svg class="ornamento" aria-hidden="true"><use href="#icone-brilho"/></svg>
+          <p class="sobretitulo">Para nossas pacientes</p>
+          <h2>Cuidado que <em>continua</em></h2>
+          <div class="divisor" aria-hidden="true"><span></span></div>
+        </div>
+        <div class="vantagens__grade">
+          <article class="vantagem" data-revelar>
+            <p class="vantagem__selo">M</p>
+            <h3>Clube M</h3>
+            <p>Planos com protocolos em condições especiais para quem cuida de si o ano todo. Vagas limitadas.</p>
+            <a href="#" class="botao botao--contorno js-whats" data-assunto="os planos do Clube M">Conhecer os planos</a>
+          </article>
+          <article class="vantagem" data-revelar>
+            <p class="vantagem__selo">VIP</p>
+            <h3>Grupo VIP</h3>
+            <p>Condições exclusivas e novidades da clínica antes de todo mundo, direto no WhatsApp.</p>
+            <a href="#" class="botao botao--contorno js-whats" data-assunto="o Grupo VIP">Quero entrar</a>
+          </article>
+          <article class="vantagem" data-revelar>
+            <p class="vantagem__selo">MM</p>
+            <h3>Linha Dra. Mayara Mota</h3>
+            <p>Skincare personalizado para continuar o cuidado em casa, entre um procedimento e outro.</p>
+            <a href="#" class="botao botao--contorno js-whats" data-assunto="a linha de skincare Dra. Mayara Mota">Ver produtos</a>
           </article>
         </div>
       </div>
@@ -360,7 +544,7 @@
           </div>
           <p>Novos seguidores ganham <strong>5% OFF + um mimo</strong> no primeiro procedimento.</p>
         </div>
-        <div class="insta__grade">
+        <div class="insta__grade" data-revelar>
           <a class="insta__item" href="https://www.instagram.com/dra_mayaramota/" target="_blank" rel="noopener"><img src="img/insta-01.webp" alt="Linha Dra. Mayara Mota de skin care personalizado" width="511" height="640" loading="lazy"></a>
           <a class="insta__item" href="https://www.instagram.com/dra_mayaramota/" target="_blank" rel="noopener"><img src="img/insta-02.webp" alt="Paciente de perfil após full face" width="512" height="640" loading="lazy"></a>
           <a class="insta__item" href="https://www.instagram.com/dra_mayaramota/" target="_blank" rel="noopener"><img src="img/insta-03.webp" alt="Post: nem sempre tratar somente uma região vai resolver sua queixa" width="512" height="640" loading="lazy"></a>
@@ -371,10 +555,58 @@
       </div>
     </section>
 
+    <!-- ===================== DÚVIDAS ===================== -->
+    <!-- Fonte: fluxo e catálogo da clínica (Clinica Isa/docs). Itens com CONFIRMAR dependem da clínica. -->
+    <section class="secao duvidas" id="duvidas">
+      <div class="container duvidas__grade">
+        <div class="cabecalho-secao" data-revelar>
+          <p class="sobretitulo">Dúvidas</p>
+          <h2>Perguntas <em>frequentes</em></h2>
+          <p>Não achou a sua? Pergunte pelo WhatsApp: a gente responde.</p>
+          <a href="#" class="botao botao--contorno js-whats" data-assunto="uma dúvida">Mandar minha dúvida</a>
+        </div>
+        <div class="faq" data-revelar>
+          <details>
+            <summary>Preciso de avaliação antes do procedimento?</summary>
+            <p>Todo tratamento começa por uma avaliação, para entender o que te incomoda e montar o plano certo. Preenchimento de mandíbula e malar só é feito depois da avaliação.</p>
+          </details>
+          <details>
+            <summary>Posso pedir orçamento sem ir à clínica?</summary>
+            <p>Pode. Mande pelo WhatsApp uma foto de frente e outra de lado (ou da região que te incomoda). A Isabelly analisa e responde com o orçamento no mesmo dia.</p>
+          </details>
+          <details>
+            <summary>Como reservo meu horário?</summary>
+            <p>Escolha o dia e o horário pelo WhatsApp. A vaga é garantida com uma caução por Pix, que depois é descontada do valor do procedimento.</p>
+          </details>
+          <details>
+            <summary>E se eu precisar remarcar ou cancelar?</summary>
+            <!-- CONFIRMAR: regra de remarcação e cancelamento -->
+            <p>Remarcar mantém a caução já paga. Cancelando com pelo menos 24 horas de antecedência, a caução é devolvida.</p>
+          </details>
+          <details>
+            <summary>Quais as formas de pagamento?</summary>
+            <p>Pix, dinheiro, débito e cartão de crédito em até 10x.</p>
+          </details>
+          <details>
+            <summary>O retorno está incluso?</summary>
+            <p>Sim, em botox e preenchimentos. Nos tratamentos corporais, como Endolaser e criolipólise, o acompanhamento já vem no pacote.</p>
+          </details>
+          <details>
+            <summary>O resultado fica natural?</summary>
+            <p>É o foco do trabalho da Dra.: realçar o que você tem de bonito, sem mudar quem você é. Cada caso é planejado para isso. Os resultados variam de pessoa para pessoa.</p>
+          </details>
+          <details>
+            <summary>Quando a Dra. atende em Rio Preto?</summary>
+            <p>Em datas abertas na agenda, divulgadas no Instagram. Pergunte as próximas datas pelo WhatsApp de Rio Preto: <a href="#" class="js-whats" data-unidade="rio-preto">(17) 99702-4555</a>.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
     <!-- ===================== UNIDADES ===================== -->
     <section class="secao unidades" id="unidades">
       <div class="container">
-        <div class="cabecalho-secao cabecalho-secao--centro">
+        <div class="cabecalho-secao cabecalho-secao--centro" data-revelar>
           <svg class="ornamento" aria-hidden="true"><use href="#icone-local"/></svg>
           <p class="sobretitulo">Unidades</p>
           <h2>Venha nos <em>visitar</em></h2>
@@ -383,7 +615,7 @@
         </div>
 
         <div class="unidades__grade">
-          <article class="unidade">
+          <article class="unidade" data-revelar>
             <div class="unidade__mapa">
               <iframe title="Mapa da unidade Araçatuba"
                       src="https://www.google.com/maps?q=Av.+Bras%C3%ADlia,+2121,+Jardim+Nova+Yorque,+Ara%C3%A7atuba+-+SP,+16018-000&output=embed"
@@ -403,7 +635,7 @@
             </div>
           </article>
 
-          <article class="unidade">
+          <article class="unidade" data-revelar>
             <div class="unidade__mapa">
               <iframe title="Mapa da unidade São José do Rio Preto"
                       src="https://www.google.com/maps?q=Georgina+Business+Park+Torre+Milan,+Av.+Benedito+Rodrigues+Lisboa,+2675,+S%C3%A3o+Jos%C3%A9+do+Rio+Preto+-+SP&output=embed"
@@ -459,6 +691,18 @@
               <span><strong>Instagram</strong>@dra_mayaramota</span>
             </a>
           </li>
+          <li>
+            <a href="https://www.tiktok.com/@mayara.mota8" target="_blank" rel="noopener">
+              <svg aria-hidden="true"><use href="#icone-tiktok"/></svg>
+              <span><strong>TikTok</strong>@mayara.mota8</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.threads.net/@dra_mayaramota" target="_blank" rel="noopener">
+              <svg aria-hidden="true"><use href="#icone-threads"/></svg>
+              <span><strong>Threads</strong>@dra_mayaramota</span>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
@@ -477,6 +721,7 @@
     <span>Agendar</span>
   </a>
 
-  <script src="js/main.js?v=2"></script>
+  <script src="js/main.js?v=3"></script>
+  <script src="js/animacoes.js?v=3"></script>
 </body>
 </html>

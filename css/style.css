@@ -1017,6 +1017,295 @@ h2 em, h1 em { font-style: italic; font-weight: 500; color: var(--ouro); }
   .whats-flutuante span { display: none; }
 }
 
+/* =====================================================================
+   v2.0 — blocos novos (método, como funciona, trilho, estudo,
+   vantagens, dúvidas). As animações ficam em animacoes.css.
+   ===================================================================== */
+:root { --anim-destaque: var(--ouro-claro); --pb: grayscale(.85); }
+
+/* o que entra pela lateral (data-revelar="direita") não cria rolagem para o lado;
+   "clip" não quebra o position: sticky do trilho e da máscara */
+main { overflow-x: clip; }
+
+/* seção escura reaproveita as cores do "Resultados" */
+.metodo {
+  --texto: var(--texto-claro);
+  --texto-suave: #cdb9a5;
+  --ouro: var(--ouro-claro);
+  --ouro-texto: var(--ouro-claro);
+  background: var(--chocolate-2);
+  color: var(--texto);
+}
+.metodo__grade {
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap: clamp(2.5rem, 6vw, 5.5rem);
+  align-items: center;
+}
+.metodo__texto > p:not(.sobretitulo) { color: var(--texto-suave); }
+.metodo .botao--ouro { margin-top: 1rem; }
+.passos-metodo {
+  list-style: none;
+  counter-reset: passo;
+  margin: 2rem 0 1.4rem;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.3rem 1.8rem;
+}
+.passos-metodo li {
+  counter-increment: passo;
+  position: relative;
+  padding-left: 3rem;
+  font-size: .93rem;
+  line-height: 1.5;
+  color: var(--texto-suave);
+}
+.passos-metodo li::before {
+  content: "0" counter(passo);
+  position: absolute;
+  left: 0;
+  top: -.2rem;
+  font-family: var(--fonte-titulo);
+  font-style: italic;
+  font-size: 1.7rem;
+  color: var(--ouro);
+}
+.passos-metodo strong { display: block; color: var(--texto); font-weight: 500; }
+.metodo__foto { position: relative; margin: 0; aspect-ratio: 3 / 4; }
+.metodo__foto::before {
+  content: "";
+  position: absolute;
+  inset: -18px -18px 18px 18px;
+  border: 1px solid var(--ouro);
+  border-radius: var(--raio) var(--raio) 999px 999px;
+}
+.metodo__foto img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--raio) var(--raio) 999px 999px;
+}
+
+/* "Ver detalhes" dos cartões de tratamento */
+.area__detalhes { margin: -.6rem 0 1.4rem; font-size: .9rem; }
+.area__detalhes summary {
+  cursor: pointer;
+  color: var(--ouro-texto);
+  font-weight: 500;
+  letter-spacing: .08em;
+  list-style: none;
+}
+.area__detalhes summary::-webkit-details-marker { display: none; }
+.area__detalhes summary::after { content: " +"; }
+.area__detalhes[open] summary::after { content: " −"; }
+.area__detalhes p { margin: .6rem 0 0; color: var(--texto-suave); line-height: 1.55; }
+.area__detalhes strong { color: var(--texto); font-weight: 500; }
+
+/* tecnologias: agora com uma linha sobre cada uma */
+.tecnologias { display: block; font-family: var(--fonte-texto); font-style: normal; font-size: 1rem; padding: 2.4rem 0; }
+.tecnologias__titulo { text-align: center; font-size: 1.9rem; color: var(--texto); margin-bottom: 1.6rem; }
+.tecnologias__lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.4rem;
+}
+.tecnologias__lista li { font-size: .92rem; line-height: 1.5; color: var(--texto-suave); text-align: center; }
+.tecnologias__lista strong {
+  display: block;
+  margin-bottom: .3rem;
+  font-family: var(--fonte-titulo);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.45rem;
+  color: var(--cacau);
+}
+
+/* Como funciona */
+.etapas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.4rem;
+}
+.etapa {
+  padding: 2rem 1.5rem 1.6rem;
+  background: #fff;
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+}
+.etapa__numero {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 1.1rem;
+  border: 1px solid var(--ouro);
+  border-radius: 50%;
+  font-family: var(--fonte-titulo);
+  font-size: 1.6rem;
+  font-style: italic;
+  color: var(--ouro-texto);
+  background: var(--creme);
+}
+.etapa h3 { font-size: 1.6rem; margin-bottom: .4rem; }
+.etapa p { margin: 0; font-size: .93rem; color: var(--texto-suave); line-height: 1.55; }
+
+/* Transição com a foto no círculo */
+.mascara { background: var(--chocolate); color: var(--texto-claro); }
+.mascara__palco img { object-position: 50% 22%; }
+.mascara__titulo { font-family: var(--fonte-titulo); font-weight: 500; font-size: clamp(2.6rem, 8vw, 6.5rem); }
+.mascara__titulo em { font-style: italic; }
+.mascara__sub { font-size: .85rem; color: var(--ouro-claro); }
+
+/* Resultados: sem animação o trilho é uma grade */
+.resultados { padding-bottom: 0; }
+.resultados .cabecalho-secao { margin-bottom: 2.4rem; }
+.trilho__faixa {
+  width: min(var(--largura), 100% - 40px);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.4rem;
+}
+.trilho__item { margin: 0; }
+/* o último caso não herda o "ocupa 2 colunas" da grade antiga do v1 */
+.trilho__item.resultado:last-child { grid-column: auto; aspect-ratio: 3 / 4; }
+.trilho__dica { display: none; }
+/* Com animação: sobra meia tela antes da 1ª foto e depois da última,
+   para que todas passem pelo centro (e ganhem cor) durante a rolagem */
+.anim .trilho { --item-w: min(26vw, (100svh - var(--altura-topo) - 260px) * .8); }
+/* ".trilho" a mais no seletor porque o animacoes.css carrega depois deste arquivo */
+.anim .trilho .trilho__item { width: var(--item-w); }
+.anim .trilho .trilho__faixa { width: max-content; margin: 0; padding-inline: calc(50vw - var(--item-w) / 2); }
+/* no computador, a foto sob o mouse também sobe e ganha cor */
+@media (hover: hover) {
+  .anim .trilho__item:hover { transform: translateY(-10px); }
+  .anim .trilho__item:hover img { filter: none; }
+}
+.anim .trilho__palco { padding-top: calc(var(--altura-topo) + 1rem); }
+.anim .trilho__dica {
+  display: block;
+  width: min(var(--largura), 100% - 40px);
+  margin: 0 auto 1.2rem;
+  font-size: .78rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+}
+.resultados > .container:last-child { padding: 2.5rem 0 clamp(4.5rem, 10vw, 7.5rem); }
+.resultados .depoimentos { margin-top: 0; }
+
+/* Sempre estudando */
+.estudo {
+  display: grid;
+  grid-template-columns: 1.3fr .7fr .7fr;
+  gap: 1.4rem;
+  align-items: center;
+  margin-top: 4rem;
+  padding-top: 3.5rem;
+  border-top: 1px solid var(--linha);
+}
+.estudo__texto h3 { font-size: clamp(1.9rem, 3.4vw, 2.6rem); }
+.estudo__texto h3 em { font-style: italic; font-weight: 500; color: var(--ouro); }
+.estudo__texto > p:not(.sobretitulo) { color: var(--texto-suave); margin: 0; }
+.estudo__foto { margin: 0; aspect-ratio: 3 / 4; overflow: hidden; border-radius: var(--raio); }
+.estudo__foto img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Vantagens: Clube M, Grupo VIP, linha de produtos */
+.vantagens { background: var(--nude); }
+.insta { background: var(--creme); }
+.vantagens__grade { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+.vantagem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 2rem 1.8rem 1.8rem;
+  background: var(--creme);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+  transition: transform .3s, box-shadow .3s;
+}
+.vantagem:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -24px rgba(59, 36, 24, .45); }
+.vantagem__selo {
+  display: grid;
+  place-items: center;
+  min-width: 56px;
+  height: 56px;
+  padding: 0 .6rem;
+  margin: 0 0 1.2rem;
+  border-radius: 999px;
+  background: var(--chocolate);
+  color: var(--ouro-claro);
+  font-family: var(--fonte-titulo);
+  font-style: italic;
+  font-size: 1.4rem;
+}
+.vantagem h3 { font-size: 1.9rem; margin-bottom: .4rem; }
+.vantagem p:not(.vantagem__selo) { margin: 0 0 1.5rem; color: var(--texto-suave); font-size: .95rem; }
+.vantagem .botao { margin-top: auto; font-size: .78rem; padding: .65rem 1.2rem; }
+
+/* Dúvidas */
+.duvidas { background: var(--nude); }
+.duvidas__grade { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+.duvidas .cabecalho-secao { margin-bottom: 0; position: sticky; top: calc(var(--altura-topo) + 2rem); }
+.duvidas .cabecalho-secao p:not(.sobretitulo) { margin-bottom: 1.6rem; }
+.faq details { border-bottom: 1px solid var(--nude-2); }
+.faq details:first-child { border-top: 1px solid var(--nude-2); }
+.faq summary {
+  position: relative;
+  cursor: pointer;
+  list-style: none;
+  padding: 1.15rem 2.5rem 1.15rem 0;
+  font-family: var(--fonte-titulo);
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: "+";
+  position: absolute;
+  right: .2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--fonte-texto);
+  font-weight: 300;
+  font-size: 1.6rem;
+  color: var(--ouro-texto);
+  transition: transform .3s;
+}
+.faq details[open] summary::after { transform: translateY(-50%) rotate(45deg); }
+.faq details p { margin: 0 0 1.3rem; color: var(--texto-suave); }
+.faq details a { color: var(--ouro-texto); font-weight: 500; }
+
+@media (max-width: 1080px) {
+  .tecnologias__lista, .etapas { grid-template-columns: 1fr 1fr; }
+  .estudo { grid-template-columns: 1fr 1fr; }
+  .estudo__texto { grid-column: 1 / -1; }
+}
+
+@media (max-width: 920px) {
+  .anim .trilho { --item-w: min(68vw, (100svh - var(--altura-topo) - 240px) * .8); }
+  .metodo__grade { grid-template-columns: 1fr; }
+  .metodo__foto { width: min(340px, 80%); margin: 1rem auto 0; }
+  .vantagens__grade { grid-template-columns: 1fr; max-width: 520px; margin-inline: auto; }
+  .duvidas__grade { grid-template-columns: 1fr; }
+  .duvidas .cabecalho-secao { position: static; }
+}
+
+@media (max-width: 640px) {
+  .passos-metodo, .tecnologias__lista, .etapas { grid-template-columns: 1fr; }
+  .trilho__faixa { grid-template-columns: 1fr 1fr; gap: .8rem; }
+  .faq summary { font-size: 1.2rem; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
